@@ -14,17 +14,27 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+.fontfamily { 
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
 
-a {
+.section_one {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.a {
   font-weight: 500;
   color: #646cff;
   text-decoration: inherit;
 }
-a:hover {
+.a:hover {
   color: #535bf2;
 }
 
-body {
+.body {
   margin: 0;
   display: flex;
   place-items: center;
@@ -37,7 +47,7 @@ h1 {
   line-height: 1.1;
 }
 
-button {
+.button {
   border-radius: 8px;
   border: 1px solid transparent;
   padding: 0.6em 1.2em;
@@ -48,11 +58,11 @@ button {
   cursor: pointer;
   transition: border-color 0.25s;
 }
-button:hover {
+.button:hover {
   border-color: #646cff;
 }
-button:focus,
-button:focus-visible {
+.button:focus,
+.button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
@@ -61,10 +71,10 @@ button:focus-visible {
     color: #213547;
     background-color: #ffffff;
   }
-  a:hover {
+  .a:hover {
     color: #747bff;
   }
-  button {
+  .button {
     background-color: #f9f9f9;
   }
 }
