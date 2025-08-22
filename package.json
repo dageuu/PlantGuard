@@ -1,0 +1,23 @@
+{
+  "name": "plantguard",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dageuu/PlantGuard.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dageuu/PlantGuard/issues"
+  },
+  "homepage": "https://github.com/dageuu/PlantGuard#readme",
+  "description": "",
+  "dependencies": {
+    "vite": "^7.1.3"
+  }
+}
