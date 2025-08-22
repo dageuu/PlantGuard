@@ -1,13 +1,18 @@
-import { useState } from 'react';
-import Homepage from './pages/homepage.jsx';
-import LandingPage from './pages/LandingPage.jsx';
+import { Routes, Route } from "react-router-dom";
+import LandingPage from "./pages/LandingPage";
+import Homepage from "./pages/homepage";
 
-export default function App() {
-  const [showHomepage, setShowHomepage] = useState(false);
+function App() {
+  return (
+    <Routes>
+      {/* Default root route */}
+      <Route index element={<LandingPage />} />
 
-  return showHomepage ? (
-    <Homepage />
-  ) : (
-    <LandingPage onGetStarted={() => setShowHomepage(true)} />
+      {/* Explicit routes */}
+      <Route path="/landingpage" element={<LandingPage />} />
+      <Route path="/dashboard" element={<Homepage />} />
+    </Routes>
   );
 }
+
+export default App;
