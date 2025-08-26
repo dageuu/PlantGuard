@@ -33,7 +33,7 @@ export default function Homepage() {
       <>
       <Header />
       {/*<div className="min-h-screen min-w-screen flex items-center justify-center bg gradient-to-tl from-green-200 from-20% via-green-300 to-green-865">*/}
-      <div className="relative min-h-screen min-w-screen flex items-center justify-center ">
+      <div className="relative min-h-screen min-w-screen bg-gradient-to-br from-green-50 via-green-100 to-green-200 flex items-center justify-center ">
       {/*<section className="section_one border-2 border-stone-600 bg-stone-100 rounded-lg h-[500px] w-[1200px] flex flex-col justify-around items-center">
         <h1 className="relative text-4xl text-amber-950">
           Welcome to PlantGuard 🌱
@@ -42,7 +42,7 @@ export default function Homepage() {
           Get Started
           </button> 
       </section>*/}
-      <section className="max-w-6xl mx-auto bg-stone-100 rounded-2xl shadow-lg p-10 grid grid-cols-1 md:grid-cols-2 gap-10 items-center border border-green-300">
+      <section className="max-w-6xl mx-auto bg-white rounded-2xl shadow-lg p-10 grid grid-cols-1 md:grid-cols-2 gap-10 items-center border border-green-300">
       {/* Left Column - Upload & Button */}
       <div className="flex flex-col items-center space-y-6">
         <div className="text-center">
@@ -50,7 +50,7 @@ export default function Homepage() {
             Welcome to PlantGuard 🌱
           </h1>
           <p className="mt-2 text-stone-600 text-lg">
-            Upload a plant photo and let AI help diagnose its health.
+            Upload your plant photo and let AI help diagnose its health.
           </p>
         </div>
 
@@ -112,11 +112,10 @@ export default function Homepage() {
           autoplay={{ delay: 2500 }}
         >
           {[
-            "https://source.unsplash.com/600x400/?plant",
-            "https://source.unsplash.com/600x400/?leaf",
-            "https://source.unsplash.com/600x400/?tree",
-            "https://source.unsplash.com/600x400/?garden",
-            "https://source.unsplash.com/600x400/?plant,disease",
+            "/carouselbg1.jpg",
+            "/carouselbg2.jpg",
+            "/carouselbg3.jpg",
+            "/carouselbg4.jpg"
           ].map((src, i) => (
             <SwiperSlide key={i}>
               <div className="rounded-xl overflow-hidden shadow-md hover:shadow-xl transition">

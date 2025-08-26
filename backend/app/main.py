@@ -1,8 +1,7 @@
-from fastapi import FastAPI, File, UploadFile
+from fastapi import FastAPI
 
 app = FastAPI()
 
-@app.post("/upload/")
-async def upload_image(file: UploadFile = File(...)):
-    contents = await file.read()
-    return {"filename": file.filename, "size": len(contents)}
+@app.get("/")
+def read_root():
+    return {"message": "Hello, PlantGuard is running!"}
