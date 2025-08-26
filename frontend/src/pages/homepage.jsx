@@ -95,7 +95,7 @@ export default function Homepage() {
           onClick={handleUpload}
           className="px-8 py-3 bg-gradient-to-r from-lime-600 to-green-700 text-white rounded-full shadow-md hover:shadow-lg hover:scale-105 transition w-[220px] text-lg font-semibold"
         >
-          Get Started
+          Start Scan
         </button>
       </div>
 
