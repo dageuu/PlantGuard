@@ -34,21 +34,10 @@ export default function Homepage() {
       <Header />
       {/*<div className="min-h-screen min-w-screen flex items-center justify-center bg gradient-to-tl from-green-200 from-20% via-green-300 to-green-865">*/}
       <div className="relative min-h-screen min-w-screen bg-gradient-to-br from-green-50 via-green-100 to-green-200 flex items-center justify-center ">
-      {/*<section className="section_one border-2 border-stone-600 bg-stone-100 rounded-lg h-[500px] w-[1200px] flex flex-col justify-around items-center">
-        <h1 className="relative text-4xl text-amber-950">
-          Welcome to PlantGuard 🌱
-        </h1>
-        <button className="mt-4 px-6 py-2 bg-lime-500 text-stone-200 hover:bg-lime-600 hover:text-stone-200 rounded-md w-[200px]">
-          Get Started
-          </button> 
-      </section>*/}
       <section className="max-w-6xl mx-auto bg-white rounded-2xl shadow-lg p-10 grid grid-cols-1 md:grid-cols-2 gap-10 items-center border border-green-300">
       {/* Left Column - Upload & Button */}
       <div className="flex flex-col items-center space-y-6">
         <div className="text-center">
-          <h1 className="text-4xl md:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-green-700 via-lime-600 to-amber-900">
-            Welcome to PlantGuard 🌱
-          </h1>
           <p className="mt-2 text-stone-600 text-lg">
             Upload your plant photo and let AI help diagnose its health.
           </p>
