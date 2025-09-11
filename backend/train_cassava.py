@@ -5,7 +5,13 @@ from tensorflow import keras
 from keras import layers
 
 # 1) ---- Paths & basic settings ----
-DATA_DIR = r"D:/Datasets/cassava/data"  # your folders live here
+# General datasets root path
+DATASETS_ROOT = r"E:/Datasets"
+
+# Choose your dataset folder here
+DATASET_NAME = "data"  
+DATA_DIR = os.path.join(DATASETS_ROOT, DATASET_NAME)
+
 IMG_SIZE = (224, 224)              # EfficientNetB0 default size
 BATCH_SIZE = 32
 VAL_SPLIT = 0.2

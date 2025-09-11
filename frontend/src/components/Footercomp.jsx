@@ -1,6 +1,8 @@
-import { Facebook, Twitter, Instagram, Mail } from "lucide-react";
+eimport { Facebook, Twitter, Instagram, Mail } from "lucide-react";
+import { useLocation } from "react-router-dom";
 
 const Footer = () => {
+  const location = useLocation();
   return (
     <footer className="bg-gradient-to-r from-green-700 via-green-600 to-green-500 text-white mt-12">
       <div className="max-w-6xl mx-auto px-6 py-10 grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
@@ -25,7 +27,7 @@ const Footer = () => {
           <h3 className="text-lg font-semibold mb-3">Quick Links</h3>
           <ul className="space-y-2 text-green-50">
             <li><a href="#home" className="hover:text-white transition">Home</a></li>
-            <li><a href="#about" className="hover:text-white transition">About Us</a></li>
+            <li><a href={location.pathname === '/' || location.pathname === '/landingpage' ? '#about' : '/landingpage#about'} className="hover:text-white transition">About Us</a></li>
             <li><a href="#features" className="hover:text-white transition">Features</a></li>
             <li><a href="#contact" className="hover:text-white transition">Contact</a></li>
             <li><a href="#privacy" className="hover:text-white transition">Privacy Policy</a></li>
