@@ -1,11 +1,13 @@
 import {useState} from 'react';
 import Header from '../components/Headercomp.jsx';
-import Footer from '../components/footercomp.jsx';
+import Footer from '../components/Footercomp.jsx';
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 
 export default function Homepage() {
     console.log('Homepage is being rendered');
+
+    const [selectedFile, setSelectedFile] = useState(null);
 
     const handleFileChange = (e) => {
       setSelectedFile(e.target.files[0]);
@@ -24,7 +26,7 @@ export default function Homepage() {
         });
         const data = await res.json();
         console.log("Response:", data);
-        alert("Uploaded: " + data.filename);
+        alert(`Prediction: ${data.prediction} (Confidence: ${(data.confidence * 100).toFixed(2)}%)`);
       } catch (err) {
         console.error("Error uploading file:", err);
       }

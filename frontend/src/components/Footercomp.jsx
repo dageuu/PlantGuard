@@ -1,4 +1,4 @@
-eimport { Facebook, Twitter, Instagram, Mail } from "lucide-react";
+import { Facebook, Twitter, Instagram, Mail } from "lucide-react";
 import { useLocation } from "react-router-dom";
 
 const Footer = () => {
