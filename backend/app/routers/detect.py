@@ -1,4 +1,4 @@
-from fastapi import APIRouter, File, UploadFile, HTTPException
+from fastapi import APIRouter, File, UploadFile
 from fastapi.responses import JSONResponse
 import tensorflow as tf
 import numpy as np

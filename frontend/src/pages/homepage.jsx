@@ -8,12 +8,16 @@ export default function Homepage() {
     console.log('Homepage is being rendered');
 
     const [selectedFile, setSelectedFile] = useState(null);
+    const [uploaded, setUploaded] = useState(false);
 
     const handleFileChange = (e) => {
       setSelectedFile(e.target.files[0]);
+      setUploaded(true); // Show "Photo uploaded!" as soon as a file is selected
+      console.log("File selected:", e.target.files[0]);
     };
   
     const handleUpload = async () => {
+      console.log("Upload button clicked");
       if (!selectedFile) return alert("Please select a file first!");
   
       const formData = new FormData();
@@ -27,8 +31,10 @@ export default function Homepage() {
         const data = await res.json();
         console.log("Response:", data);
         alert(`Prediction: ${data.prediction} (Confidence: ${(data.confidence * 100).toFixed(2)}%)`);
+        setUploaded(true); // Mark as uploaded
       } catch (err) {
         console.error("Error uploading file:", err);
+        alert("Error uploading image: " + err.message);
       }
     };
     return (
@@ -49,28 +55,76 @@ export default function Homepage() {
         <div className="w-full max-w-md">
           <label
             htmlFor="plant-upload"
-            className="flex flex-col items-center justify-center border-2 border-dashed border-lime-500 rounded-xl p-10 bg-white cursor-pointer hover:bg-lime-50 transition transform hover:scale-105 hover:shadow-md"
+            className={`flex flex-col items-center justify-center border-2 border-dashed border-lime-500 rounded-xl p-10 bg-white cursor-pointer hover:bg-lime-50 transition transform hover:scale-105 hover:shadow-md ${uploaded ? "border-green-500 bg-green-50" : ""}`}
+            tabIndex={0}
+            onClick={() => {
+              if (!uploaded) {
+                document.getElementById('plant-upload').click();
+              }
+            }}
+            onKeyDown={(e) => {
+              if ((e.key === 'Enter' || e.key === ' ') && !uploaded) {
+                e.preventDefault();
+                document.getElementById('plant-upload').click();
+              }
+            }}
+            onDragOver={(e) => {
+              e.preventDefault();
+            }}
+            onDrop={(e) => {
+              e.preventDefault();
+              const files = e.dataTransfer.files;
+              if (files.length > 0) {
+                setSelectedFile(files[0]);
+                setUploaded(true); // <-- Fix: show "Photo uploaded!" after drop
+                console.log("File dropped:", files[0]);
+              }
+            }}
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-14 w-14 text-lime-600 mb-3"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M7 16V4m0 0l-4 4m4-4l4 4M17 8v12m0 0l-4-4m4 4l4-4"
-              />
-            </svg>
-            <span className="text-stone-600 font-medium">
-              Click or drag photo here
-            </span>
-            <span className="text-sm text-stone-400 mt-1">
-              Supports: JPG, PNG
-            </span>
+            {uploaded ? (
+              <>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-14 w-14 text-green-600 mb-3"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M5 13l4 4L19 7"
+                  />
+                </svg>
+                <span className="text-green-700 font-semibold">
+                  Photo uploaded!
+                </span>
+              </>
+            ) : (
+              <>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-14 w-14 text-lime-600 mb-3"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M7 16V4m0 0l-4 4m4-4l4 4M17 8v12m0 0l-4-4m4 4l4-4"
+                  />
+                </svg>
+                <span className="text-stone-600 font-medium">
+                  Click or drag photo here
+                </span>
+                <span className="text-sm text-stone-400 mt-1">
+                  Supports: JPG, PNG
+                </span>
+              </>
+            )}
           </label>
           <input
             id="plant-upload"
@@ -84,7 +138,8 @@ export default function Homepage() {
         {/* Button */}
         <button
           onClick={handleUpload}
-          className="px-8 py-3 bg-gradient-to-r from-lime-600 to-green-700 text-white rounded-full shadow-md hover:shadow-lg hover:scale-105 transition w-[220px] text-lg font-semibold"
+          disabled={!selectedFile}
+          className={`px-8 py-3 bg-gradient-to-r from-lime-600 to-green-700 text-white rounded-full shadow-md hover:shadow-lg hover:scale-105 transition w-[220px] text-lg font-semibold ${!selectedFile ? "opacity-50 cursor-not-allowed" : ""}`}
         >
           Start Scan
         </button>
