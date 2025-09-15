@@ -1,5 +1,5 @@
 import React from 'react';
-import Footer from '../components/footercomp';
+import Footer from '../components/Footercomp';
 import Header from '../components/Headercomp';
 import { useNavigate } from 'react-router-dom';
 
