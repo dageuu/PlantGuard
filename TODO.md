@@ -2,3 +2,7 @@
 - [x] Update frontend to call correct backend port (3000)
 - [x] Add error alert in frontend for upload failures
 - [x] Test the image upload functionality after changes
+- [ ] Add state for scan result in homepage.jsx
+- [ ] Modify handleUpload to store result in state instead of alert
+- [ ] Add UI section to display scan result (image, prediction, confidence)
+- [ ] Add option to scan another image

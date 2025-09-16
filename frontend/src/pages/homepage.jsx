@@ -9,6 +9,7 @@ export default function Homepage() {
 
     const [selectedFile, setSelectedFile] = useState(null);
     const [uploaded, setUploaded] = useState(false);
+    const [scanResult, setScanResult] = useState(null);
 
     const handleFileChange = (e) => {
       setSelectedFile(e.target.files[0]);
@@ -30,7 +31,12 @@ export default function Homepage() {
         });
         const data = await res.json();
         console.log("Response:", data);
-        alert(`Prediction: ${data.prediction} (Confidence: ${(data.confidence * 100).toFixed(2)}%)`);
+        setScanResult({
+          prediction: data.prediction,
+          confidence: data.confidence,
+          filename: data.filename,
+          file: selectedFile
+        });
         setUploaded(true); // Mark as uploaded
       } catch (err) {
         console.error("Error uploading file:", err);
@@ -143,6 +149,32 @@ export default function Homepage() {
         >
           Start Scan
         </button>
+        {scanResult && (
+          <div className="mt-8 p-6 border border-green-300 rounded-lg bg-green-50 w-full max-w-md text-center">
+            <h2 className="text-xl font-semibold mb-4 text-green-800">Scan Result</h2>
+            <img
+              src={URL.createObjectURL(scanResult.file)}
+              alt={scanResult.filename}
+              className="mx-auto mb-4 rounded-lg max-h-48 object-contain"
+            />
+            <p className="text-lg font-medium text-green-900">
+              Prediction: <span className="font-bold">{scanResult.prediction}</span>
+            </p>
+            <p className="text-lg font-medium text-green-900">
+              Confidence: <span className="font-bold">{(scanResult.confidence * 100).toFixed(2)}%</span>
+            </p>
+            <button
+              onClick={() => {
+                setScanResult(null);
+                setSelectedFile(null);
+                setUploaded(false);
+              }}
+              className="mt-4 px-6 py-2 bg-red-600 text-white rounded-full hover:bg-red-700 transition"
+            >
+              Scan Another Image
+            </button>
+          </div>
+        )}
       </div>
 
       {/* Right Column - Carousel */}
